@@ -5,6 +5,43 @@ import NbBox from "../../components/NbBox/nb-box";
 import Button from "../../components/NbButton/nb-button";
 import Text from "../../components/Text/text";
 import './login.css';
+import Div from "../../components/Div";
+
+type LoginInputProps = {
+  type: "text" | "password";
+  placeholder: string;
+  onChange: (value: string) => void;
+}
+
+const LoginInput = ({ type, placeholder, onChange }: LoginInputProps) => (
+  <Div center flexColumn>
+    <Input type={type} placeholder={placeholder} w="100%" h="4rem" fontSize="2rem" onChange={e => onChange(e.target.value)} />
+    <a href="#" className="margin-0-5">
+      <Text size="14pt">I forgot my {placeholder.toLowerCase()} :(</Text>
+    </a>
+  </Div>
+);
+
+type LoginButtonProps = {
+  children: React.ReactNode;
+}
+
+const LoginButton = ({ children }: LoginButtonProps) => (
+  <div className="center flex-column">
+    <Button type="submit" backgroundColor="#93FF89" w="15rem" h="5rem">
+      <Text size="26pt">{children}</Text>
+    </Button>
+    <a href="#" className="margin-0-5">I don't have an account</a>
+  </div>
+);
+
+const GitHubIcon = () => (
+  <div className="center">
+    <a href="https://github.com/vithortinti/hosys-webui" target="_blank">
+      <img src="/github.svg" alt="github" width="48px" className="filter-white margin-2" />
+    </a>
+  </div>
+)
 
 function LoginPage() {
   const [username, setUsername] = useState("");
@@ -24,37 +61,12 @@ function LoginPage() {
             <Text size="76pt">login</Text>
           </div>
           <div className="flex-column group">
-            <div className="center">
-              <div className="flex-column">
-                <Input type="text" placeholder="USERNAME" w="100%" h="4rem" fontSize="2rem" onChange={e => setUsername(e.target.value)} />
-                <a href="#" className="margin-0-5">
-                  <Text size="14pt">I forgot my username :(</Text>
-                </a>
-              </div>
-            </div>
-            <div className="center">
-              <div className="flex-column">
-                <Input type="password" placeholder="PASSWORD" w="100%" h="4rem" fontSize="2rem" onChange={e => setPassword(e.target.value)} />
-                <a href="#" className="margin-0-5">
-                  <Text size="14pt">I forgot my password :(</Text>
-                </a>
-              </div>
-            </div>
-            <div className="center">
-              <div className="flex-column">
-                <div className="center flex-column">
-                  <Button type="submit" backgroundColor="#93FF89" w="15rem" h="5rem">
-                    <Text size="26pt">LET'S GO</Text>
-                  </Button>
-                  <a href="#" className="margin-0-5">I don't have an account</a>
-                </div>
-                <div className="center">
-                  <a href="https://github.com/vithortinti/hosys-webui" target="_blank">
-                    <img src="/github.svg" alt="github" width="48px" className="filter-white margin-2" />
-                  </a>
-                </div>
-              </div>
-            </div>
+            <LoginInput type="text" placeholder="USERNAME" onChange={setPassword} />
+            <LoginInput type="password" placeholder="PASSWORD" onChange={setPassword} />
+            <Div>
+              <LoginButton>LET'S GO</LoginButton>
+              <GitHubIcon />
+            </Div>
           </div>
         </NbBox>
         <div className="center flex-column group">
