@@ -1,11 +1,10 @@
-.login-grid {
+.auth-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10rem;
 }
 
 .group {
-  flex-direction: column;
   width: 100%;
   gap: 2rem;
 }
@@ -16,10 +15,6 @@
 
 .title-margin {
   margin: 5rem 0 5rem 0;
-}
-
-.filter-white {
-  filter: invert(100%);
 }
 
 .margin-0-5 {

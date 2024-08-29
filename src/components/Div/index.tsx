@@ -3,12 +3,13 @@ type DivProps = {
   flexColumn?: boolean;
   flexRow?: boolean;
   children: React.ReactNode;
+  className?: string;
 }
 
-function Div({ children, center, flexColumn, flexRow }: DivProps) {
+function Div({ children, center, flexColumn, flexRow, className }: DivProps) {
   return (
-    <div className={center ? "center" : ""}>
-      <div className={ flexColumn ? "flex-column" : (flexRow ? "flex-row" : "") }>
+    <div className={center ? "center " + className : className}>
+      <div className={ flexColumn ? "flex-column " + className : (flexRow ? "flex-row " + className : className) }>
         {children}
       </div>
     </div>
