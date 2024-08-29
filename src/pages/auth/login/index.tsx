@@ -31,7 +31,7 @@ function LoginPage() {
               <a href="#" className="margin-0-5">I forgot my username :(</a>
             </Div>
             <Div center flexColumn>
-              <Input type="text" placeholder="PASSWORD" w="100%" h="4rem" fontSize="2rem" onChange={e => setUsername(e.target.value)} />
+              <Input type="password" placeholder="PASSWORD" w="100%" h="4rem" fontSize="2rem" onChange={e => setUsername(e.target.value)} />
               <a href="#" className="margin-0-5">I forgot my password :(</a>
             </Div>
             <Div center flexColumn>
